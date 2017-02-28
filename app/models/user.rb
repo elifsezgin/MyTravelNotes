@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6, allow_nil: true }
   validates :email, :session_token, uniqueness: true
 
+  has_many :notes
+
   after_initialize :ensure_session_token!
 
   def password=(password)
