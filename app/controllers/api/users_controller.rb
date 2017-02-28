@@ -20,7 +20,7 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    # render 'api/users/profile.json.jbuilder'
+    render 'api/users/show.json.jbuilder'
   end
 
   private
