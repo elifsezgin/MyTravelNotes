@@ -9,23 +9,22 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Image
 } from 'react-native';
+import SignUp from './app/components/session/signup';
 
 export default class MyTravelNotes extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Huloooo!
+        <Image style={styles.image} source={require("./images/note.jpg")}>
+        <SignUp />
+        <Text style={styles.instructions}>
         </Text>
         <Text style={styles.instructions}>
-          To get started, edit index.ios.js
         </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+      </Image>
       </View>
     );
   }
@@ -36,17 +35,18 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  image: {
+    alignSelf: 'stretch',
+    width: "100%",
+    height: "100%",
+    zIndex: -10,
+    opacity: 0.5,
   },
   instructions: {
     textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+    marginBottom: 10,
+    backgroundColor: 'transparent',
   },
 });
 
