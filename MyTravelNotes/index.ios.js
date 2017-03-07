@@ -20,10 +20,6 @@ export default class MyTravelNotes extends Component {
       <View style={styles.container}>
         <Image style={styles.image} source={require("./images/travel.jpg")}>
         <SignUp />
-        <Text style={styles.instructions}>
-        </Text>
-        <Text style={styles.instructions}>
-        </Text>
       </Image>
       </View>
     );
@@ -42,12 +38,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     zIndex: -10,
-    opacity: 0.5,
-  },
-  instructions: {
-    textAlign: 'center',
-    marginBottom: 10,
-    backgroundColor: 'transparent',
+    opacity: 0.8,
   },
 });
 
