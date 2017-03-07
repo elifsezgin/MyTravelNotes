@@ -18,7 +18,7 @@ export default class MyTravelNotes extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image style={styles.image} source={require("./images/note.jpg")}>
+        <Image style={styles.image} source={require("./images/travel.jpg")}>
         <SignUp />
         <Text style={styles.instructions}>
         </Text>
@@ -33,6 +33,7 @@ export default class MyTravelNotes extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
   },
