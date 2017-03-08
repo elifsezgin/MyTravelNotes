@@ -7,60 +7,31 @@ import {
   TextInput,
   Button,
 } from 'react-native';
-import MainView from "../main_view/main_view";
 
 export default class SignUp extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      first_name: "",
-      last_name: "",
       email: "",
-      image_url: "",
       password: ""
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit (e) {
     e.preventDefault();
-    if (this.state.image_url === '') {
-      this.setState({image_url: "http://res.cloudinary.com/datsbxfvs/image/upload/v1488931829/default_avatar_byjrz7.png"});
-    }
-    const user = Object.assign({}, this.state);
-    console.log(user);
-    console.log(this.props);
-    this.props.navigator.push({
-      component: MainView,
-    });
-    // this.props.signup({ user }).then(()=> {
-    //
-    // });
+  }
+  handleSwitch (e) {
+    e.preventDefault();
+
   }
 
   render() {
     return (
       <View style={styles.inputForm}>
         <View style={styles.inputContainer}>
-          <Text style={styles.label}>First Name</Text>
-          <TextInput
-  					style={styles.signupInput}
-            autoCorrect={false}
-  					onChangeText={(text) => this.setState({first_name: text})}
-  					value={this.state.firstName}/>
-        </View>
-        <View style={styles.inputContainer}>
-          <Text style={styles.label}>Last Name</Text>
-          <TextInput
-  					style={styles.signupInput}
-            autoCorrect={false}
-  					onChangeText={(text) => this.setState({last_name: text})}
-  					value={this.state.lastName}/>
-        </View>
-        <View style={styles.inputContainer}>
           <Text style={styles.label}>Email</Text>
           <TextInput
-  					style={styles.signupInput}
+  					style={styles.loginInput}
             autoCorrect={false}
   					onChangeText={(text) => this.setState({email: text})}
   					value={this.state.email}/>
@@ -68,7 +39,7 @@ export default class SignUp extends Component {
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Password</Text>
           <TextInput
-  					style={styles.signupInput}
+  					style={styles.loginInput}
             autoCorrect={false}
             secureTextEntry={true}
   					onChangeText={(text) => this.setState({password: text})}
@@ -77,10 +48,10 @@ export default class SignUp extends Component {
         <View style={styles.button}>
         <Button
           onPress={this.handleSubmit}
-          title="Sign Up"
+          title="Log in"
           color= "#FFFFFF"
           fontFamily= 'AvenirNext-Regular'
-          accessibilityLabel="Sign Up"
+          accessibilityLabel="Log in"
           />
         </View>
       </View>
@@ -121,8 +92,8 @@ const styles = StyleSheet.create({
     color: '#808080',
     fontFamily: 'AvenirNext-Regular'
   },
-  signupInput: {
-    height: 20,
+  loginInput: {
+    height: 86.5,
 		fontSize: 20,
 		width: "60%",
     color: '#000000',

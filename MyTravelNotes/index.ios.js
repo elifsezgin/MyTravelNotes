@@ -12,14 +12,16 @@ import {
   View,
   Image
 } from 'react-native';
-import SignUp from './app/components/session/signup';
+// import SignUp from './app/components/session/signup';
+// import LogIn from './app/components/session/login';
+import Session from './app/components/session/session';
 
 export default class MyTravelNotes extends Component {
   render() {
     return (
       <View style={styles.container}>
         <Image style={styles.image} source={require("./images/travel.jpg")}>
-        <SignUp />
+        <Session />
       </Image>
       </View>
     );
