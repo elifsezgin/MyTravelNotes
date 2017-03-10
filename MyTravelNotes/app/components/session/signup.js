@@ -9,6 +9,22 @@ import {
 } from 'react-native';
 import MainView from "../main_view/main_view";
 
+// import {connect} from 'react-redux';
+// import {signup, login} from '../../actions/session_actions';
+// import {clearErrors} from '../../actions/error_actions';
+//
+// const mapStateToProps = state => ({
+//   currentUser: state.session.currentUser,
+//   errors: state.errors
+// });
+// const mapDispatchToProps = dispatch => ({
+//   signup: user => dispatch(signup(user)),
+//   login: user => dispatch(login(user)),
+//   clearErrors: () => dispatch(clearErrors())
+// });
+//
+// connect(mapStateToProps, mapDispatchToProps)(SignUp);
+
 export default class SignUp extends Component {
   constructor (props) {
     super(props);
@@ -33,9 +49,16 @@ export default class SignUp extends Component {
     this.props.navigator.push({
       component: MainView,
     });
-    // this.props.signup({ user }).then(()=> {
-    //
-    // });
+    fetch('http://localhost:3000/api/users', {
+				 method: 'POST',
+				 headers: {
+					 'Accept': 'application/json',
+					 'Content-Type': 'application/json',
+				 },
+				 body: JSON.stringify( {user: this.state })
+			 }).then((response) => {
+        console.log(response);
+       });
   }
 
   render() {

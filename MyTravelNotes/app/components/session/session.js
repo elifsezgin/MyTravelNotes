@@ -5,6 +5,7 @@ import {
   Text,
   View,
   Button,
+  Image
 } from 'react-native';
 
 import SignUp from './signup';
@@ -22,6 +23,8 @@ export default class Session extends Component {
 
   render() {
     return (
+      <View style={styles.container}>
+        <Image style={styles.image} source={require("../../../images/travel.jpg")}>
       <View style={styles.inputForm}>
         <View style={styles.switch}>
         <View style= {styles.switchButton}>
@@ -44,13 +47,28 @@ export default class Session extends Component {
               />
           </View>
         </View>
-        {this.state.status === 'SignUp' ? <SignUp /> : <LogIn /> }
+        {this.state.status === 'SignUp' ? <SignUp navigator={this.props.navigator} /> : <LogIn navigator={this.props.navigator} /> }
       </View>
+    </Image>
+    </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  image: {
+    alignSelf: 'stretch',
+    width: "100%",
+    height: "100%",
+    zIndex: -10,
+    opacity: 0.8,
+  },
   inputForm: {
     flex: 1,
     flexDirection: 'column',
