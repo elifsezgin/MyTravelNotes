@@ -15,10 +15,19 @@ export default class MainView extends Component {
   }
 
   render() {
+    debugger;
     return (
       <View>
-        <Text>Hello World</Text>
+        <Text style={styles.main}>Hello World</Text>
       </View>
     );
   }
 }
+
+
+const styles = StyleSheet.create({
+  main: {
+    marginTop: 200,
+    alignItems: 'stretch',
+  },
+});

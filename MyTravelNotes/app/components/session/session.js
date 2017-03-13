@@ -8,7 +8,7 @@ import {
   Image
 } from 'react-native';
 
-import SignUp from './signup';
+import SignUpContainer from './signup_container';
 import LogIn from './login';
 
 
@@ -47,7 +47,7 @@ export default class Session extends Component {
               />
           </View>
         </View>
-        {this.state.status === 'SignUp' ? <SignUp navigator={this.props.navigator} /> : <LogIn navigator={this.props.navigator} /> }
+        {this.state.status === 'SignUp' ? <SignUpContainer navigator={this.props.navigator} /> : <LogIn navigator={this.props.navigator} /> }
       </View>
     </Image>
     </View>
