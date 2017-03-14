@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 import SignUpContainer from './signup_container';
-import LogIn from './login';
+import LogInContainer from './login_container';
 
 
 export default class Session extends Component {
@@ -42,7 +42,7 @@ export default class Session extends Component {
             </Text>
           </TouchableOpacity>
         </View>
-        {this.state.status === 'SignUp' ? <SignUpContainer /> : <LogIn /> }
+        {this.state.status === 'SignUp' ? <SignUpContainer /> : <LogInContainer /> }
       </View>
     </Image>
     </View>

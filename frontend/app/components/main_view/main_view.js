@@ -15,7 +15,6 @@ export default class MainView extends Component {
   }
 
   render() {
-    debugger;
     return (
       <View>
         <Text style={styles.main}>Hello World</Text>

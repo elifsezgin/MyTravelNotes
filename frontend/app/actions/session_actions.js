@@ -9,16 +9,25 @@ export const receiveCurrentUser = (currentUser) => ({
 });
 
 export const login = user => dispatch => (
-  SessionAPIUtil.login(user).then(data => dispatch(receiveCurrentUser(data)),
-  err => dispatch(receiveErrors(err.responseJSON)))
+  SessionAPIUtil.login(user)
+    .then(SessionAPIUtil.checkStatus)
+    .then(response => response.json())
+    .then(responseData => (dispatch(receiveCurrentUser(responseData))))
+    .catch(err => (dispatch(receiveErrors(err.responseJSON))))
 );
 
 export const logout = () => dispatch => (
-  SessionAPIUtil.logout().then(data => dispatch(receiveCurrentUser(null)),
-  err => dispatch(receiveErrors(err.responseJSON)))
+  SessionAPIUtil.logout()
+    .then(SessionAPIUtil.checkStatus)
+    .then((response) => response.json())
+    .then(responseData => dispatch(receiveCurrentUser(responseData)))
+    .catch(err => dispatch(receiveErrors(err.responseJSON)))
 );
 
 export const signup = user => dispatch => (
-  SessionAPIUtil.signup(user).then(data => dispatch(receiveCurrentUser(data)),
-  err => dispatch(receiveErrors(err.responseJSON)))
+  SessionAPIUtil.signup(user)
+    .then(SessionAPIUtil.checkStatus)
+    .then((response) => response.json())
+    .then(responseData => dispatch(receiveCurrentUser(responseData)))
+    .catch(err => dispatch(receiveErrors(err.responseJSON)))
 );

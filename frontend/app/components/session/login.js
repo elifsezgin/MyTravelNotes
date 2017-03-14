@@ -16,20 +16,19 @@ export default class SignUp extends Component {
       email: "",
       password: ""
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit (e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.login(user).then(() => {
-      Actions.home();
-      debugger;
-      _reactNativeRouterFlux.Actions.home();
-    });
+    this.props.login(user).then((response) => (
+      Actions.home()
+    ), (err) => console.log(err));
   }
+
   handleSwitch (e) {
     e.preventDefault();
-
   }
 
   render() {

@@ -35,8 +35,6 @@ export default class SignUp extends Component {
     const user = Object.assign({}, this.state);
     this.props.signup(user).then(() => {
       Actions.home();
-      debugger;
-      _reactNativeRouterFlux.Actions.home();
     });
   }
 
