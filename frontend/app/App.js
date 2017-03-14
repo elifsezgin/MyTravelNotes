@@ -15,6 +15,7 @@ import {
 import configureStore from './store/store';
 import { Router, Scene } from 'react-native-router-flux';
 import Session from './components/session/session';
+import MainView from './components/main_view/main_view';
 
 let store = configureStore();
 window.store = store;
@@ -24,7 +25,8 @@ export default class App extends Component {
     return (
         <Provider store={store} >
           <Router>
-            <Scene key="loader" component={Session} title="session" hideNavBar={true} initial />
+            <Scene key="session" component={Session} title="session" hideNavBar={true} initial />
+            <Scene key="home" component={MainView} title="home" hideNavBar={true} />
           </Router>
       </Provider>
     );

@@ -4,7 +4,7 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
+  TouchableOpacity,
   Image
 } from 'react-native';
 
@@ -27,27 +27,22 @@ export default class Session extends Component {
         <Image style={styles.image} source={require("../../../images/travel.jpg")}>
       <View style={styles.inputForm}>
         <View style={styles.switch}>
-        <View style= {styles.switchButton}>
-        <Button
-          onPress={() => this.setState({status: 'LogIn'})}
-          title="Log In"
-          accessibilityLabel="Sign Up"
-          color= "#FFFFFF"
-
-          />
-          </View>
-          <View style= {styles.switchButton}>
-            <Button
+        <TouchableOpacity
+          style={styles.switchButton}
+          onPress={() => this.setState({status: 'LogIn'})}>
+          <Text style={styles.buttonText}>
+                Log in
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
               style= {styles.switchButton}
-              onPress={() => this.setState({status: 'SignUp'})}
-              title="Sign Up"
-              accessibilityLabel="Sign Up"
-              color= "#FFFFFF"
-              fontFamily= 'AvenirNext-Regular'
-              />
-          </View>
+              onPress={() => this.setState({status: 'SignUp'})}>
+            <Text style={styles.buttonText}>
+              Sign up
+            </Text>
+          </TouchableOpacity>
         </View>
-        {this.state.status === 'SignUp' ? <SignUpContainer navigator={this.props.navigator} /> : <LogIn navigator={this.props.navigator} /> }
+        {this.state.status === 'SignUp' ? <SignUpContainer /> : <LogIn /> }
       </View>
     </Image>
     </View>
@@ -86,8 +81,11 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   switchButton: {
-    borderBottomColor: "#808080",
-    borderBottomWidth: 2,
+    alignItems: 'center',
     width: '50%',
+  },
+  buttonText: {
+    color: "#FFFFFF",
+    fontFamily: "AvenirNext-Regular"
   }
 });

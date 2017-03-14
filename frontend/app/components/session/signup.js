@@ -12,6 +12,7 @@ import MainView from "../main_view/main_view";
 import {connect} from 'react-redux';
 import {signup, login} from '../../actions/session_actions';
 import {clearErrors} from '../../actions/error_actions';
+import {Actions} from 'react-native-router-flux';
 
 export default class SignUp extends Component {
   constructor (props) {
@@ -28,28 +29,14 @@ export default class SignUp extends Component {
 
   handleSubmit (e) {
     e.preventDefault();
-    if (this.state.image_url === '') {
-      this.setState({image_url: "http://res.cloudinary.com/datsbxfvs/image/upload/v1488931829/default_avatar_byjrz7.png"});
+    if (this.state.image_url === "") {
+      this.state.image_url = "http://res.cloudinary.com/datsbxfvs/image/upload/v1488931829/default_avatar_byjrz7.png";
     }
     const user = Object.assign({}, this.state);
-    console.log(user);
-    console.log(this.props);
-
-    this.props.signup(user).then((response) => {
-      console.log(response);
-    });
-    // fetch('http://localhost:3000/api/users', {
-		// 		 method: 'POST',
-		// 		 headers: {
-		// 			 'Accept': 'application/json',
-		// 			 'Content-Type': 'application/json',
-		// 		 },
-		// 		 body: JSON.stringify( {user: this.state })
-		// 	 }).then((response) => {
-    //     console.log(response);
-    //    });
-    this.props.navigator.push({
-      component: MainView,
+    this.props.signup(user).then(() => {
+      Actions.home();
+      debugger;
+      _reactNativeRouterFlux.Actions.home();
     });
   }
 

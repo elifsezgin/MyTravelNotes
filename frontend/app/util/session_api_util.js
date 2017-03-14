@@ -5,13 +5,10 @@ export const signup = (user) => (
   			 'Accept': 'application/json',
   			 'Content-Type': 'application/json',
   		 },
-  		 body: JSON.stringify( {user})
+  		 body: JSON.stringify( {
+         user
+       } )
   	 })
-  // $.ajax({
-  //   method: 'POST',
-  //   url: 'api/users',
-  //   data: user
-  // })
 );
 
 export const login = (user) => (

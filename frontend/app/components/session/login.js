@@ -7,6 +7,7 @@ import {
   TextInput,
   Button,
 } from 'react-native';
+import {Actions} from 'react-native-router-flux';
 
 export default class SignUp extends Component {
   constructor (props) {
@@ -19,6 +20,12 @@ export default class SignUp extends Component {
 
   handleSubmit (e) {
     e.preventDefault();
+    const user = Object.assign({}, this.state);
+    this.props.login(user).then(() => {
+      Actions.home();
+      debugger;
+      _reactNativeRouterFlux.Actions.home();
+    });
   }
   handleSwitch (e) {
     e.preventDefault();

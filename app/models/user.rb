@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
 
   has_many :notes
 
+  attr_reader :password
+
   after_initialize :ensure_session_token!
 
   def password=(password)
