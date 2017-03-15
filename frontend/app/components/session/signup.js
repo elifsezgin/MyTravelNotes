@@ -28,6 +28,10 @@ export default class SignUp extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componenDidMount() {
+    this.props.clearErrors();
+  }
+
   handleSubmit (e) {
     e.preventDefault();
     if (this.state.image_url === "") {
@@ -42,6 +46,8 @@ export default class SignUp extends Component {
     });
     this.props.signup(user).then(() => {
       Actions.home();
+    }, err => {
+      this.setState({errors: this.props.errors});
     });
   }
 
@@ -49,7 +55,7 @@ export default class SignUp extends Component {
     const errors = this.state.errors;
     return (
       <View style={styles.inputForm}>
-        {errors ? <Text style={styles.error}>{errors}</Text> : null }
+        {errors ? errors.map(error => <Text style={styles.error}>{error}</Text>) : null }
         <View style={styles.inputContainer}>
           <Text style={styles.label}>First Name</Text>
           <TextInput

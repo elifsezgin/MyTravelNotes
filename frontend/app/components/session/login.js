@@ -20,13 +20,18 @@ export default class SignUp extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componenWillReceiveProps(newProps) {
+    // this.props.errors !== newProps.errors ?
+    // this.setState({errors: []})
+  }
+
   handleSubmit (e) {
     e.preventDefault();
     const user = Object.assign({}, {email: this.state.email, password: this.state.password});
-    this.props.login(user).then((response) => {
+    this.props.login(user).then(() => {
       Actions.home();
     }, err => {
-      this.setState({errors: this.props.errors})
+      this.setState({errors: this.props.errors});
     });
   }
 
@@ -38,7 +43,7 @@ export default class SignUp extends Component {
     const errors = this.state.errors;
     return (
       <View style={styles.inputForm}>
-        {errors ? <Text style={styles.error}>{errors}</Text> : null }
+        {errors ? errors.map(error => <Text style={styles.error}>{error}</Text>) : null }
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Email</Text>
           <TextInput

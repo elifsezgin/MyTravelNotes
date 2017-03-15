@@ -42,6 +42,9 @@ export const signup = user => dispatch => (
   .then(responseData => {
     if (responseData.errors) {
       dispatch(receiveErrors(responseData.errors));
+      let error = new Error(responseData.errors);
+      error.response = responseData;
+      throw error;
     } else {
       (dispatch(receiveCurrentUser(responseData)));
     }
