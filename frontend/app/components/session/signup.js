@@ -22,7 +22,8 @@ export default class SignUp extends Component {
       last_name: "",
       email: "",
       image_url: "",
-      password: ""
+      password: "",
+      errors: []
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -32,15 +33,23 @@ export default class SignUp extends Component {
     if (this.state.image_url === "") {
       this.state.image_url = "http://res.cloudinary.com/datsbxfvs/image/upload/v1488931829/default_avatar_byjrz7.png";
     }
-    const user = Object.assign({}, this.state);
+    const user = Object.assign({}, {
+      first_name: this.state.first_name,
+      last_name: this.state.last_name,
+      email: this.state.email,
+      image_url: this.state.image_url,
+      password: this.state.password
+    });
     this.props.signup(user).then(() => {
       Actions.home();
     });
   }
 
   render() {
+    const errors = this.state.errors;
     return (
       <View style={styles.inputForm}>
+        {errors ? <Text style={styles.error}>{errors}</Text> : null }
         <View style={styles.inputContainer}>
           <Text style={styles.label}>First Name</Text>
           <TextInput
@@ -89,6 +98,10 @@ export default class SignUp extends Component {
 }
 
 const styles = StyleSheet.create({
+  error: {
+    backgroundColor: '#808080',
+    color: '#FFFFFF'
+  },
   inputContainer: {
     flexDirection: 'column',
     width: '100%',

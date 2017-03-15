@@ -14,17 +14,20 @@ export default class SignUp extends Component {
     super(props);
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      errors: []
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit (e) {
     e.preventDefault();
-    const user = Object.assign({}, this.state);
-    this.props.login(user).then((response) => (
-      Actions.home()
-    ), (err) => console.log(err));
+    const user = Object.assign({}, {email: this.state.email, password: this.state.password});
+    this.props.login(user).then((response) => {
+      Actions.home();
+    }, err => {
+      this.setState({errors: this.props.errors})
+    });
   }
 
   handleSwitch (e) {
@@ -32,8 +35,10 @@ export default class SignUp extends Component {
   }
 
   render() {
+    const errors = this.state.errors;
     return (
       <View style={styles.inputForm}>
+        {errors ? <Text style={styles.error}>{errors}</Text> : null }
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Email</Text>
           <TextInput
@@ -66,6 +71,10 @@ export default class SignUp extends Component {
 }
 
 const styles = StyleSheet.create({
+  error: {
+    backgroundColor: '#808080',
+    color: '#FFFFFF'
+  },
   inputContainer: {
     flexDirection: 'column',
     width: '100%',
